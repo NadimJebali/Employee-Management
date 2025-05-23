@@ -1,0 +1,16 @@
+<div class="bg-white rounded shadow-sm text-center p-4" style="max-width: 720px;">
+  <div class="d-flex justify-content-center align-items-center mb-4">
+    <h1 class="fw-bold display-5 mb-0 me-2 text-dark">
+      {{ user.firstName }} {{ user.lastName }}
+    </h1>
+  </div>
+
+  <!-- Infos utilisateur -->
+  <div class="fs-4 text-dark">
+    <p class="mb-3">🗓️ <strong>Age:</strong> <span class="text-primary fw-semibold">{{ user.age }}</span></p>
+    <p class="mb-3">🏢 <strong>Department:</strong> <span class="text-primary fw-semibold">{{ user.department }}</span></p>
+    <p class="mb-3">📞 <strong>Phone:</strong> <span class="text-primary fw-semibold">(+216) {{ user.phoneNumber }}</span></p>
+    <p class="mb-0">📧 <strong>Email:</strong> <span class="text-primary fw-semibold">{{ user.email }}</span></p>
+  </div>
+</div>
+

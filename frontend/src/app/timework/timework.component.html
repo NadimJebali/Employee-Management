@@ -1,0 +1,77 @@
+<div class="ms-5">
+    <h4 class="fw-bold">Good Morning Mohamed</h4>
+    <p class="text-muted">Hope you have a good day</p>
+    <h5 class="mt-4">Requests of Holidays</h5>
+
+    <!-- Formulaire + calendrier côte à côte -->
+    <div class="row mt-4">
+        <!-- Partie gauche : champs -->
+            <div class="col-lg-8">
+                <div class="row">
+                    <!-- Ligne 1 : Days -->
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Day</label>
+                        <input type="number"  class="form-control" placeholder="Day" [value]="day" disabled>
+                    </div>
+                    <!-- Ligne 2 : Months -->
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Month</label>
+                        <input type="number"  class="form-control" placeholder="Month" [value]="month" disabled>
+                    </div>
+                    <!-- Ligne 3 : Years -->
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Year</label>
+                        <input type="number" class="form-control" placeholder="Year" [value]="years" disabled>
+                    </div>
+                    <!-- Durée -->
+                    <div class="col-md-12 mt-5">
+                        <label class="form-label">Duration Per hourd</label>
+                        <input #val type="number" class="form-control" placeholder="Hour" >
+                    </div>
+
+                    <div class="col-md-12 mt-5">
+                        <label class="form-label">Description</label>
+                        <input #valdes type="text" class="form-control" placeholder="Description">
+                    </div>
+                </div>
+                <br>
+                <div class="text-center mt-3">
+                    <button class="btn shadow-sm text-white" style="background: #3E5580;" (click)="getcor(day , month , years , val.value , valdes.value)">Send</button>
+                </div>
+                <br>
+            </div>
+        <!-- Calendrier -->
+        <div class="col-lg-4">
+            <app-calender (datecalender)="recup($event)"></app-calender>
+        </div>
+    </div>
+
+    <!-- Tableau en dessous -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <table class="table mt-4 bg-white rounded shadow-sm">
+                <thead>
+                    <tr>
+                        <th>Date Work</th>
+                        <th>Duration</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (request of requests.timesheets.reverse(); track $index) {
+                    <tr>
+                        <td>{{ request.date }}</td>
+                        <td>{{ request.hoursWorked }}</td>
+                        <td>{{ request.description}}</td>
+                        <td>
+                            <span class="badge" [ngClass]="request.status === 'PENDING' ? 'bg-warning' :request.status === 'APPROVED' ? 'bg-success' :'bg-danger'" >
+                             {{ request.status }}
+                            </span>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>

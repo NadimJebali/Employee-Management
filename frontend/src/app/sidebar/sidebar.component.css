@@ -1,0 +1,5 @@
+.list-group-item.active a {
+    text-decoration: underline;
+    font-weight: bold;
+    
+  }

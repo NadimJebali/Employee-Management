@@ -1,0 +1,41 @@
+<div class="row mt-5">
+    <!-- Carte de gauche -->
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Teams Strength</h5>
+          <canvas id="mychart">{{chart}}</canvas>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Carte de droite -->
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <canvas id="chart2">{{chart}}</canvas>
+        </div>
+      </div>
+
+      <div class="mt-5">
+        <div class="card" style="height: 335px; overflow: hidden;">
+          <div class="card-header bg-white text-black">
+            Comments
+          </div>
+          <div class="card-body overflow-auto" style="max-height: 260px;">
+            <ul class="list-group list-group-flush">
+
+              @for (comment of comments; track $index)
+              {
+              <li class="list-group-item">
+                {{ comment }}
+              </li>
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  

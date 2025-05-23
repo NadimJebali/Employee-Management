@@ -1,0 +1,85 @@
+
+<div class="col input-group text-end">
+  <input #emu  type="text" class="form-control" placeholder="Give Me Email" >
+  <button class="btn btn-outline-secondary" (click)="all()" type="button">All</button>
+  <button class="btn btn-outline-secondary" (click)="search(emu.value)" type="button"><img src="https://img.icons8.com/?size=100&id=83218&format=png&color=000000" style="width: 20px; height: 20px;"></button>
+
+</div>
+
+
+<div class="col text-center">
+    <button class=" btn btn-success m-4" (click)="approved(val)">APPROVED</button>
+    <button class="btn btn-danger" (click)="rejected(val)">REJECTED</button>
+</div> 
+<div class="row mt-5">
+    <div class="col-md-11 mx-auto">
+      <table class="table align-middle bg-white rounded shadow-sm text-center">
+        <thead>
+          <tr>
+            <th>Selected</th>
+            <th>Numero</th>
+            <th>Date </th>
+            <th>hours Worked</th>
+            <th>Name Employee</th>
+            <th>Department</th>
+            <th >Description</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+         @for (request of listtime; track $index) {
+          @if (email == "") {
+         <tr>
+            <td>
+                <div class="form-check-inline">
+                    <input class="form-check-input" type="radio" name="radioDefault" [value]="request" [(ngModel)]="val">
+                  </div>
+            </td>
+            <td>{{ $index+1 }}</td>
+            <td>{{ request.date }}</td>
+            <td>{{ request.hoursWorked }}</td>
+            <td>{{ request.user.firstName }}</td>
+            <td>{{ request.user.department}}</td>
+            <td>{{ request.description}}</td>
+            <td>
+                <span class="badge" [ngClass]="
+                request.status === 'PENDING' ? 'bg-warning' :
+                request.status === 'APPROVED' ? 'bg-success' :
+                'bg-danger'
+                " >
+                  {{ request.status }}
+                </span>
+            </td>
+          </tr>
+          }
+          @else {
+            @if (request.user.email == email){
+              <tr>
+                <td>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="radioDefault" [value]="request" [(ngModel)]="val">
+                      </div>
+                </td>
+                <td>{{ $index+1 }}</td>
+                <td>{{ request.date }}</td>
+                <td>{{ request.hoursWorked }}</td>
+                <td>{{ request.user.firstName }}</td>
+                <td>{{ request.user.department}}</td>
+                <td>{{ request.description}}</td>
+                <td>
+                    <span class="badge" [ngClass]="
+                    request.status === 'PENDING' ? 'bg-warning' :
+                    request.status === 'APPROVED' ? 'bg-success' :
+                    'bg-danger'
+                    " >
+                      {{ request.status }}
+                    </span>
+                </td>
+              </tr>
+            }
+          }
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>

@@ -1,0 +1,97 @@
+<div class="ms-5">
+  <h4 class="fw-bold">Good Morning </h4>
+  <p class="text-muted">Hope you have a good day</p>
+  <h5 class="mt-4">Requests of Holidays</h5>
+
+  <!-- Formulaire + calendrier côte à côte -->
+  <div class="row mt-4">
+    <!-- Partie gauche : champs -->
+    <div class="col-lg-8">
+      <div class="row">
+        <!-- Ligne 1 : Days -->
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Start Day</label>
+          <input type="number" class="form-control" placeholder="Day" [value]="day" disabled>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">End Day</label>
+          <input type="number" class="form-control" placeholder="Day" [value]="dayf" disabled>
+        </div>
+
+        <!-- Ligne 2 : Months -->
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Start Month</label>
+          <input type="number" class="form-control" placeholder="Month" [value]="month" disabled>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">End Month</label>
+          <input type="number" class="form-control" placeholder="Month" [value]="monthf" disabled>
+        </div>
+
+        <!-- Ligne 3 : Years -->
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Start Year</label>
+          <input type="number" class="form-control" placeholder="Year" [value]="years" disabled>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">End Year</label>
+          <input type="number" class="form-control" placeholder="Year" [value]="yearsf" disabled>
+        </div>
+
+        <!-- Durée -->
+        <div class="col-md-12 mb-3">
+          <label class="form-label">Duration Per Days</label>
+          <input type="number" class="form-control" placeholder="Days" (input)="refrech()" [(ngModel)]="duration">
+        </div>
+
+        <div class="col-md-12 mb-3">
+        <label class="form-label">Reason</label>
+        <input #reason type="text" class="form-control" placeholder="VACATION" value="" >
+      </div>
+    </div>
+
+    <div class="text-center mt-3">
+      <button class="btn shadow-sm text-white" style="background: #3E5580;" (click)="addrequest(reason.value)">Send</button>
+    </div>
+  </div>
+
+  <!-- Calendrier -->
+  <div class="col-lg-4">
+    <app-calender (datecalender)="recup($event)"></app-calender>
+  </div>
+</div>
+
+<!-- Tableau des demandes -->
+<div class="row mt-5">
+  <div class="col-md-11 mx-auto">
+    <table class="table bg-white rounded shadow-sm text-center">
+      <thead>
+        <tr>
+          <th>Date Start</th>
+          <th>Date End</th>
+          <th>Reason</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (request of requests.leaveRequests.reverse(); track $index) {
+       <tr>
+          <td>{{ request.startDate }}</td>
+          <td>{{ request.endDate }}</td>
+          <td>{{ request.reason}}</td>
+          <td>
+            <span class="badge" [ngClass]="
+            request.status === 'PENDING' ? 'bg-warning' :
+            request.status === 'APPROVED' ? 'bg-success' :
+            'bg-danger'
+          " >
+              {{ request.status }}
+            </span>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>

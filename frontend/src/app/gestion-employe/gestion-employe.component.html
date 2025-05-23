@@ -1,0 +1,222 @@
+<div class="row ms-5 me-5">
+  <!-- Colonne gauche : Formulaire -->
+  <div class="col-md-5">
+    <h4 class="fw-bold">Good Morning</h4>
+    <p class="text-muted">Hope you have a good day</p>
+    <h5 class="mt-4">Requests of Holidays</h5>
+
+    <div class="row g-3 mt-2">
+      <div class="col-auto">
+        <button type="button" class="btn btn-success" (click)="addemployee()">Add Employee</button>
+      </div>
+      <div class="col-auto">
+        <button type="button" class="btn btn-warning" (click)="updateemployee(val)">Update Employee</button>
+      </div>
+      <div class="col-auto">
+        <button type="button" class="btn btn-danger" (click)="deleteemployee()">Delete Employee</button>
+      </div>
+
+    </div>
+    <br>
+
+    @if (formadd ) {
+    <form #add="ngForm">
+      <div class="col-auto">
+          <label class="form-label">First Name</label>
+          <input #fn="ngModel" ngModel name="firstName" type="text" required class="form-control" [ngClass]="{ 'is-invalid': fn.invalid && fn.touched }" placeholder="First Name"/>
+        @if (fn.invalid && fn.touched) {
+          <div class="invalid-feedback d-block">Enter a First Name</div>
+        }
+      </div>
+      <br>
+      <div class="col-auto">
+        <label class="form-label">Last Name</label>
+        <input #ln="ngModel" ngModel type="text" required class="form-control" name="lastName" [ngClass]="{ 'is-invalid': ln.invalid && ln.touched }" placeholder="Last Name">
+        @if (ln.invalid && ln.touched) {
+          <div class="invalid-feedback d-block">Enter a Last Name</div>
+        }
+      </div>
+      <br>
+      <div class="col-auto">
+        <label class="form-label">Email</label>
+        <input #em="ngModel" ngModel type="email" email required class="form-control" name="email" [ngClass]="{ 'is-invalid': em.invalid && em.touched }" placeholder="Email">
+        @if (em.invalid && em.touched) {
+          <div class="invalid-feedback d-block">Enter a  Email (xyz&#64;xyz.xyz)</div>
+        }
+      </div>
+      <br>
+      <div class="col-auto">
+        <label class="form-label">Age</label>
+        <input #ag="ngModel" ngModel type="number" required min="18" max="65" class="form-control" [ngClass]="{ 'is-invalid': ag.invalid && ag.touched }" name="age" placeholder="Age">
+        @if (ag.invalid && ag.touched) {
+          <div class="invalid-feedback d-block">Enter a Age (between 18 and 65)</div>
+        }
+      </div>
+      <br>
+      <div class="col-auto">
+        <label class="form-label">Password</label>
+        <input #pass="ngModel" ngModel type="text" required minlength="8" class="form-control" [ngClass]="{ 'is-invalid': pass.invalid && pass.touched }" name="password" placeholder="Password">
+        @if (pass.invalid && pass.touched) {
+          <div class="invalid-feedback d-block">Enter a Password(Min Length 8 char)</div>
+        }
+      </div>
+      <br>
+      <div class="col-auto">
+        <label class="form-label">Phone Number</label>
+        <input #nt="ngModel" ngModel required minlength="8"  type="text" [ngClass]="{ 'is-invalid': nt.invalid && nt.touched }" class="form-control" name="phoneNumber" placeholder="Phone Number">
+        @if (nt.invalid && nt.touched) {
+          <div class="invalid-feedback d-block">Enter Phone Number (8 Number)</div>
+        }
+      </div>
+      <br>
+      <div class="col-auto">
+        <label class="form-label">Solde Holidays Per Day</label>
+        <input #sh="ngModel" ngModel required type="number" [ngClass]="{ 'is-invalid': sh.invalid && sh.touched }"  class="form-control" name="soldconge" placeholder="Solde Conge">
+        @if (sh.invalid && sh.touched) {
+          <div class="invalid-feedback d-block">Enter Solde Holidays</div>
+        }
+      </div>
+      <br>
+      <div class="col-auto">
+        <label class="form-label">Departement</label>
+        <input #dp="ngModel" ngModel required type="text" [ngClass]="{ 'is-invalid': dp.invalid && dp.touched }"   class="form-control" name="department" placeholder="Departement">
+        @if (dp.invalid && dp.touched) {
+          <div class="invalid-feedback d-block">Enter Departement</div>
+        }
+      </div>
+      <br>
+      <div class="text-center">
+        <button type="submit" class="btn shadow-sm text-white" style="background: #3E5580;"
+          (click)="addUser(add.value , add)">Valid Add</button>
+      </div>
+    </form>
+    }
+
+    @if (formupdate) {
+    <form #updat = "ngForm">
+      <div class="col-auto">
+        <label class="form-label">First Name</label>
+        <input #fnu="ngModel" [ngClass]="{ 'is-invalid': fnu.invalid && fnu.touched }" required [ngModel]="val2 != -1 ? listUsers[val2].firstName :''" type="text" class="form-control" name="firstName" [value]="val2 != -1 ? listUsers[val2].firstName :'' ">
+        @if (fnu.invalid && fnu.touched) {
+          <div class="invalid-feedback d-block">Enter a First Name</div>
+        }
+      </div>
+      <br>
+      <div class="col-auto">
+        <label class="form-label">Last Name</label>
+        <input #lnu="ngModel" [ngClass]="{ 'is-invalid': lnu.invalid && lnu.touched }" required  [ngModel]="val2 != -1 ? listUsers[val2].lastName :'' " type="text" class="form-control" name="lastName" [value]="val2 != -1 ? listUsers[val2].lastName :'' ">
+        @if (lnu.invalid && lnu.touched) {
+          <div class="invalid-feedback d-block">Enter a Last Name</div>
+        }
+      </div>
+      <br>
+      <div class="col-auto">
+        <label class="form-label">Email</label>
+        <input #emu="ngModel" [ngClass]="{ 'is-invalid': emu.invalid && emu.touched }"  required email [ngModel]="val2 != -1 ? listUsers[val2].email :'' " type="email" class="form-control" name="email" [value]="val2 != -1 ? listUsers[val2].email :'' ">
+        @if (emu.invalid && emu.touched) {
+          <div class="invalid-feedback d-block">Enter a  Email (xyz&#64;xyz.xyz)</div>
+        }
+      </div>
+      <br>
+      <div class="col-auto">
+        <label class="form-label">Age</label>
+        <input #agu="ngModel" [ngClass]="{ 'is-invalid': agu.invalid && agu.touched }" required min="18" max="65"  [ngModel]="val2 != -1 ? listUsers[val2].age :'' " type="number" class="form-control" name="age" [value]="val2 != -1 ? listUsers[val2].age :'' ">
+        @if (agu.invalid && agu.touched) {
+          <div class="invalid-feedback d-block">Enter a Age (Between 18 and 65) (xyz&#64;xyz.xyz)</div>
+        }
+      </div>
+      <br>
+      <div class="col-auto">
+        <label class="form-label">Phone Number</label>
+        <input #pnu="ngModel" [ngClass]="{ 'is-invalid': pnu.invalid && pnu.touched }" required maxlength="8" [ngModel]="val2 != -1 ? listUsers[val2].phoneNumber :'' " type="text" class="form-control" name="phoneNumber" [value]="val2 != -1 ? listUsers[val2].phoneNumber :'' ">
+        @if (pnu.invalid && pnu.touched) {
+          <div class="invalid-feedback d-block">Enter a Phone Number (8 Number)</div>
+        }
+      </div>
+      <br>
+      <div class="col-auto">
+        <label class="form-label">Solde Holidays</label>
+        <input #shu="ngModel" [ngClass]="{ 'is-invalid': shu.invalid && shu.touched }" required [ngModel]="val2 != -1 ? listUsers[val2].soldconge :'' " type="number" class="form-control" name="soldconge" [value]="val2 != -1 ? listUsers[val2].soldconge :'' ">
+        @if (shu.invalid && shu.touched) {
+          <div class="invalid-feedback d-block">Enter a Solde Holidays</div>
+        }
+      </div>
+      <br>
+      <div class="col-auto">
+        <label class="form-label">Departement</label>
+        <input #du="ngModel" [ngClass]="{ 'is-invalid': du.invalid && du.touched }" required [ngModel]="val2 != -1 ? listUsers[val2].department :'' " type="text" class="form-control" name="department" [value]="val2 != -1 ? listUsers[val2].department :'' ">
+        @if (du.invalid && du.touched) {
+          <div class="invalid-feedback d-block">Enter a Departement</div>
+        }
+      </div>
+      <br>
+      <div class="text-center">
+        <button class="btn shadow-sm text-white" type="submit" style="background: #3E5580;" (click)="updateuser(updat.value ,updat)">Valid Update</button>
+      </div>
+    </form>
+    }
+
+
+  </div>
+  <!-- Colonne droite : Tableau -->
+
+  
+  <div class="col-md-7" style="margin-top: 70px;">
+    <div class="col input-group text-end">
+      <input #emu  type="text" class="form-control" placeholder="Give Me Email" >
+      <button class="btn btn-outline-secondary" (click)="all()" type="button">All</button>
+      <button class="btn btn-outline-secondary" (click)="search(emu.value)" type="button"><img src="https://img.icons8.com/?size=100&id=83218&format=png&color=000000" style="width: 20px; height: 20px;"></button>
+    </div>
+    <table class="table mt-4 bg-white rounded shadow-sm text-center">
+      <thead>
+        <tr>
+          <th>Selected</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Age</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Departement</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (request of listUsers; track $index) {
+          @if (email == "") {
+        <tr>
+          <td>
+            <div class="form-check-inline">
+              <input class="form-check-input" type="radio" name="ra" id="at" [value]="request.id" [(ngModel)]="val"
+                (click)="rr($index)">
+            </div>
+          </td>
+          <td>{{ request.firstName }}</td>
+          <td>{{ request.lastName }}</td>
+          <td>{{ request.age }}</td>
+          <td>{{ request.email }}</td>
+          <td>{{ request.phoneNumber}}</td>
+          <td>{{ request.department}}</td>
+        </tr>
+        }@else {
+
+        }@if (request.email == email) 
+        {
+          <tr>
+            <td>
+              <div class="form-check-inline">
+                <input class="form-check-input" type="radio" name="ra" id="at" [value]="request.id" [(ngModel)]="val"
+                  (click)="rr($index)">
+              </div>
+            </td>
+            <td>{{ request.firstName }}</td>
+            <td>{{ request.lastName }}</td>
+            <td>{{ request.age }}</td>
+            <td>{{ request.email }}</td>
+            <td>{{ request.phoneNumber}}</td>
+            <td>{{ request.department}}</td>
+          </tr>
+        }
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

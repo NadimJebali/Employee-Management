@@ -1,0 +1,67 @@
+<div class="container-fluid p-4">
+
+  <!-- En-tête -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="fw-bold">Good Morning {{userinfo.lastName}}</h4>
+    <img src="/logout.png"
+         style="width: 25px; height: 25px; cursor: pointer;"
+         onmouseover="this.style.transform='scale(1.2)'"
+         onmouseout="this.style.transform='scale(1)'"
+         (click)="logout()">
+  </div>
+
+  <p class="text-muted mb-4">Hope you have a good day</p>
+
+  <div class="row g-4">
+  <!-- Statistiques HR -->
+  @if (roleuser == "HR") {
+    <div class="row g-3 mb-4">
+      <div class="col-md-4">
+        <div class="bg-white rounded shadow-sm text-center p-4">
+          <img src="https://img.icons8.com/?size=100&id=2zQuuMM0XuM9&format=png&color=000000" style="width: 40px;">
+          <div class="stat-value h4 mt-2">{{admin}}</div>
+          <div class="stat-label text-muted">Administrators</div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="bg-white rounded shadow-sm text-center p-4">
+          <img src="https://img.icons8.com/?size=100&id=41863&format=png&color=000000" style="width: 40px;">
+          <div class="stat-value h4 mt-2">{{employe}}</div>
+          <div class="stat-label text-muted">Employees</div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="bg-white rounded shadow-sm text-center p-4">
+          <img src="https://img.icons8.com/?size=100&id=rZqNJyUlWoA6&format=png&color=000000" style="width: 40px;">
+          <div class="stat-value h4 mt-2">{{hr}}</div>
+          <div class="stat-label text-muted">HR</div>
+        </div>
+      </div>
+    </div>
+  }
+  @else {
+    <div>
+    <div class="col-md-12">
+      <div class="bg-white rounded shadow-sm text-center p-4">
+        <img src="https://img.icons8.com/?size=100&id=31928&format=png&color=000000" style="width: 40px;">
+        <div class="stat-value h4 mt-2">{{userinfo.soldconge}}</div>
+        <div class="stat-label text-muted">Days</div>
+      </div>
+    </div>
+  </div>
+
+  }
+
+  <!-- Profil & Notifications -->
+  
+    <div class="col-xxl-6 col-lg-7">
+      <app-cardprofile [user]="userinfo"></app-cardprofile>
+    </div>
+    <div class="col-xxl-5 col-lg-5">
+      <app-listnotif></app-listnotif>
+    </div>
+  </div>
+
+</div>

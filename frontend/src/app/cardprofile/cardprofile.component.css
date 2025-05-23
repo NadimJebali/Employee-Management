@@ -1,0 +1,35 @@
+.profile-card {
+    background-color: #FDFDFD;
+    border-radius: 2rem;
+    padding: 2rem;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.05);
+  }
+
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #e0e0e0;
+  }
+
+  .profile-info h2 {
+    font-size: 2rem; /* équivalent à fs-2 */
+    font-weight: 700;
+  }
+
+  .profile-info p {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .edit-icon {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .edit-icon:hover {
+    transform: scale(1.2);
+  }

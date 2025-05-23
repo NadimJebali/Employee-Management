@@ -1,0 +1,54 @@
+@if (ref)
+{
+  <div class="d-flex justify-content-center align-items-center vh-100">
+    <img src="/yibo.gif" >
+  </div>
+  
+}
+@else {
+
+<div class="login-wrapper d-flex justify-content-center align-items-center">
+    <div class="login-box bg-white p-4 rounded-4 shadow w-100" style="max-width: 450px; min-height: 470px;">
+      <div class="text-end text-light small mb-2">English (USA)</div>
+      <h3 class="fw-bold text-center">Welcome</h3>
+      <p class="text-muted text-center">Please enter your details.</p>
+  
+      <form #log="ngForm">
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input #em="ngModel" ngModel type="email" name="email" required email class="form-control"  [ngClass]="{ 'is-invalid': em.invalid && em.touched }" placeholder="Enter your email" />
+           @if (em.invalid && em.touched) {
+          <div class="invalid-feedback d-block">Enter Your Email (xyz&#64;xyz.xyz)</div>
+        }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input #pass="ngModel" ngModel [type]="showpassword?'input':'password'" required class="form-control"  name="password" [ngClass]="{ 'is-invalid': pass.invalid && pass.touched }" placeholder="*********" />
+          @if (pass.invalid && pass.touched) {
+            <div class="invalid-feedback d-block">Enter Your Password</div>
+          }
+        </div>
+       
+        <div class="form-check">
+          <input type="checkbox" (change)="showpassword = !showpassword" class="form-check-input" id="display" />
+          <label for="display" class="form-check-label small">Display Password</label>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="remember" />
+            <label for="remember" class="form-check-label small">Remember me</label>
+          </div>
+          <a href="#" class="small text-primary text-decoration-none">Forget Password?</a>
+        </div>
+
+  
+        <button type="submit" (click)="login(log)" class="btn btn-primary w-100 rounded-3 fw-semibold">Log in</button>
+  
+      </form>
+    </div>
+
+  
+  </div>
+}

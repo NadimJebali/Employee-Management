@@ -1,0 +1,105 @@
+
+<div class="d-flex vh-100 bg-light">
+  <div class="d-flex flex-column p-3 text-white bg-white min-vh-100" style="width: 250px;">
+    <img src="/logo.png" width="200" height="150" >
+    <br>
+    <ul class="nav nav-pills flex-column mb-auto mt-5">
+      <li class="list-group-item" routerLinkActive="active" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"  >
+        <a class="nav-link d-flex align-items-center gap-2 text-dark"
+           routerLink="profile" 
+           >
+          <img src="https://img.icons8.com/?size=100&id=1xcYaLGPoYQS&format=png&color=000000" alt="Profile" width="27" height="27">
+          Profile
+        </a>
+      </li>
+      <br>
+      @if (role === "EMPLOYEE" ) {
+      <li class="list-group-item" routerLinkActive="active" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" >
+        <a class="nav-link d-flex align-items-center gap-2 text-dark"
+           routerLink="holiday"
+           >
+          <img src="https://img.icons8.com/?size=100&id=vwGXRtPWrZSn&format=png&color=000000" alt="Holiday" width="27" height="27">
+          Holiday
+        </a>
+      </li>
+
+      <br>
+      <li class="list-group-item " routerLinkActive="active" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" >
+        <a class="nav-link d-flex align-items-center gap-1 text-dark "
+           [routerLink]="['work']"
+           >
+           <img src="https://img.icons8.com/?size=100&id=vyhfGmDCDlp9&format=png&color=000000" width="27" height="27">
+          <i class="bi bi-envelope"></i>
+          Time Of Work
+        </a>
+      </li>
+      <br>
+      <li class="list-group-item " routerLinkActive="active" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" >
+        <a class="nav-link d-flex align-items-center gap-1 text-dark "
+           [routerLink]="['assessment']"
+           >
+           <img src="https://img.icons8.com/?size=100&id=61195&format=png&color=000000" width="27" height="27">
+          <i class="bi bi-envelope"></i>
+          Assessment
+        </a>
+      </li>
+      <br>
+    }
+      
+   
+      @if (role === "HR") {
+        <li class="list-group-item" routerLinkActive="active" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" >
+          <a class="nav-link d-flex align-items-center gap-2 text-dark"
+             routerLink="holidaysetting"
+             >
+            <img src="https://img.icons8.com/?size=100&id=vwGXRtPWrZSn&format=png&color=000000" alt="Holiday" width="27" height="27">
+            Holiday
+          </a>
+        </li>
+        <br>
+        <li class="list-group-item " routerLinkActive="active" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" >
+          <a class="nav-link d-flex align-items-center gap-1 text-dark "
+             [routerLink]="['worksetting']"
+             >
+             <img src="https://img.icons8.com/?size=100&id=vyhfGmDCDlp9&format=png&color=000000" width="27" height="27">
+            <i class="bi bi-envelope"></i>
+            Time Workers
+          </a>
+        </li>
+        <br>
+      <li class="list-group-item" routerLinkActive="active" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" >
+        <a class="nav-link d-flex align-items-center gap-1 text-dark"
+           [routerLink]="['gestion']"
+           >
+          <img src="https://img.icons8.com/?size=100&id=OUdqvn4VDDbc&format=png&color=000000" width="27" height="27">
+          <i class="bi bi-display"></i>
+          Workers
+        </a>
+      </li>
+      <br>
+      <li class="list-group-item" routerLinkActive="active" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" >
+        <a class="nav-link d-flex align-items-center gap-1 text-dark"
+           [routerLink]="['assessmentsetting']"
+           >
+          <img src="https://img.icons8.com/?size=100&id=79882&format=png&color=000000" width="27" height="27">
+          <i class="bi bi-display"></i>
+          Evaluation
+        </a>
+      </li>
+      <br>
+    }
+      
+    </ul>
+    
+    
+    
+  
+    <div class="mt-auto text-center">
+      <img src="/sideimage.png" width="220" height="200" />
+    </div>
+</div>
+
+  <div class="flex-grow-1 p-4 overflow-auto ">
+      <router-outlet ></router-outlet>
+  </div>
+</div>

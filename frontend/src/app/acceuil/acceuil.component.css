@@ -1,0 +1,19 @@
+.home-wrapper
+{
+    background: radial-gradient(circle at center, #3b5998 0%, transparent 70%);
+}
+
+.nav-custom {
+    font-size: 1.2rem;
+    padding: 0.8rem 1rem;
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+  
+
+nav ul .list-group-item.active a {
+    text-decoration: underline;
+    font-weight: bold;
+    
+}
+
+

@@ -1,0 +1,27 @@
+<div class="p-4 text-white shadow" style="height: 450px; background: #3E5580; border-radius: 20px;" >
+    <p>{{getSelectedDate()}}</p>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <button class="btn btn-sm btn-light text-primary" (click)="prevMonth()">&lt;</button>
+      <h5 class="mb-0">{{ monthNames[currentMonth] }} {{ currentYear }}</h5>
+      <button class="btn btn-sm btn-light text-primary" (click)="nextMonth()">&gt;</button>
+    </div>
+    <div class="d-grid" style="grid-template-columns: repeat(7, 2fr); text-align: center;">
+      <div class="fw-bold">M</div>
+      <div class="fw-bold">T</div>
+      <div class="fw-bold">W</div>
+      <div class="fw-bold">T</div>
+      <div class="fw-bold">F</div>
+      <div class="fw-bold">S</div>
+      <div class="fw-bold">S</div>
+
+      @for (day of calendarDays; track day)
+      {
+        <div class="py-2">
+          <span class="d-inline-block rounded-circle" [ngClass]="{'bg-danger text-white px-2': day === selectedDay,'text-white': day !== ''}" (click)="selectDay(day)"
+            style="cursor: pointer; width: 2rem; height: 2rem; line-height: 2rem;">
+            {{ day }}
+          </span>
+        </div>
+      }
+    </div>
+</div>

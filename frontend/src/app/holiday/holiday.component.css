@@ -1,0 +1,28 @@
+/* Réduit la taille du popup */
+.custom-toast-popup {
+    background-color: #f7faff !important;
+    border-radius: 10px;
+    padding: 10px 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    min-width: 280px;
+    max-width: 350px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .custom-toast-icon {
+    color: #3b82f6; /* Bleu comme sur l’image */
+    transform: scale(0.8); /* Icône plus petite */
+  }
+  
+  .alert-title {
+    color: #3b82f6;
+    font-weight: 600;
+    font-size: 16px;
+    display: block;
+  }
+  
+  .alert-message {
+    color: #444;
+    font-size: 14px;
+  }
+  
