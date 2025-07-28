@@ -106,8 +106,9 @@ npm # 🧑‍💼 Project Employee Management
 cd backend
 npm install
 npm run start
-
+```
 # Frontend
+```bash
 cd frontend
 npm install
 ng serve
