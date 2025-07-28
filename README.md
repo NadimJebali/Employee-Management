@@ -112,5 +112,3 @@ npm run start
 cd frontend
 npm install
 ng serve
-install
-ng serve
