@@ -1,4 +1,4 @@
-# 🧑‍💼 Projet Employee Management
+# 🧑‍💼 Project Employee Management
 
 
 **Employee-Management Project** is a full-stack Human Resources Management System designed for companies to handle employee data, leave requests, performance evaluations, and timesheets. It includes both employee and HR administrator roles, providing tailored dashboards and functionality for each.
