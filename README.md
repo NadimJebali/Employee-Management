@@ -46,9 +46,12 @@
 
 ## 🧪 Setup Instructions
 
-### 1. Backend
-
-```bash
+# Backend
 cd backend
 npm install
 npm run start
+
+# Frontend
+cd frontend
+npm install
+ng serve
